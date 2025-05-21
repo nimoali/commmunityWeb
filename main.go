@@ -35,9 +35,14 @@ func main() {
 	// Initialize Handlers
 	sessionHandler := handlers.NewSessionHandler(sessionService, quranService)
 	quranHandler := handlers.NewQuranHandler(quranService)
+	quranUploadRepo := repositories.NewQuranRepository(db)
+	quranUplaodService := services.NewQuranService(quranUploadRepo)
+	quranUploadHandler := handlers.NewSessionHandler(quranUplaodService)
 
 	r := gin.Default()
 
+
+	r.POST("/api/quran/upload", quranUploadHandler.UploadVerse)
 	r.POST("/api/session/start", sessionHandler.StartSession)
 	r.GET("/api/quran/verse", quranHandler.GetVerseByMood)
 	r.POST("/api/session/:id/action", sessionHandler.HandleAction)

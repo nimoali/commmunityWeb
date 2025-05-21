@@ -10,11 +10,17 @@ import (
 type SessionService interface {
 	StartSession(goal string, duration int, mood string) (map[string]interface{}, error)
 	HandleAction(sessionID, action string) map[string]string
+	UploadVerse(verse *models.QuranVerse) error
 }
 
 type sessionService struct {
-	repo repositories.SessionRepository
+	repo  repositories.SessionRepository
 	quran QuranService
+}
+
+// UploadVerse implements SessionService.
+func (s *sessionService) UploadVerse(verse *models.QuranVerse) error {
+	panic("unimplemented")
 }
 
 func NewSessionService(repo repositories.SessionRepository) SessionService {
@@ -47,5 +53,3 @@ func (s *sessionService) HandleAction(sessionID, action string) map[string]strin
 		"status":  action,
 	}
 }
-
-

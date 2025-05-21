@@ -4,7 +4,9 @@ package handlers
 import (
 	"net/http"
 	"newfolder/services"
+
 	// "studyhard/services"
+
 	"github.com/gin-gonic/gin"
 )
 
@@ -25,3 +27,4 @@ func (h *QuranHandler) GetVerseByMood(c *gin.Context) {
 	}
 	c.JSON(http.StatusOK, verse)
 }
+

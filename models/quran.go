@@ -8,4 +8,8 @@ type QuranVerse struct {
 	Reference string `json:"reference"`
 	Tags      []string `json:"tags"`
 	AudioURL  string `json:"audio_url"`
+	Mood       string `bson:"mood" json:"mood"`
 }
+
+
+
